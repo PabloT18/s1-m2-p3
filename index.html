@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Acceso</title>
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            display: flex;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <h3>Acceso restringido</h3>
+        <input
+            type="password"
+            id="clave"
+            placeholder="Ingrese la clave"
+        >
+        <button onclick="validar()">Ingresar</button>
+    </div>
+
+    <script>
+        function validar() {
+            const clave = document.getElementById("clave").value;
+
+            if (clave === "ups-set") {
+                sessionStorage.setItem("auth", "ok");
+                window.location.href = "e1-v2-a3.html";
+
+            } else {
+                alert("Clave incorrecta");
+            }
+        }
+    </script>
+
+</body>
+
+</html>
