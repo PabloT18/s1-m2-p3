@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta
+		name="viewport"
+		content="width=device-width, initial-scale=1.0"
+	/>
+	<title>Guía de evaluación - Set y Map en Java</title>
+
+	<link
+		rel="stylesheet"
+		href="./css/styles.css"
+	>
+</head>
+
+<body>
+	<main
+		class="page"
+		id="practice-content"
+	>
+		<table class="guide-table">
+			<tr>
+				<td class="logo-cell">
+					<img
+						src="./assets/ups-svg-plain.svg"
+						alt="Logo UPS"
+						class="logo-img"
+					>
+				</td>
+				<td
+					colspan="4"
+					class="title-cell"
+				>
+					FORMATO DE GUÍA
+				</td>
+			</tr>
+
+			<tr>
+				<td colspan="5">&nbsp;</td>
+			</tr>
+
+			<tr>
+				<td colspan="2"><strong>CARRERA:</strong> Computación</td>
+				<td colspan="3"><strong>ASIGNATURA:</strong> Estructura de Datos</td>
+			</tr>
+
+			<tr>
+				<td><strong>NRO. EVALUACIÓN:</strong></td>
+				<td>1</td>
+				<td colspan="3">
+					<strong>TÍTULO EVALUACIÓN:</strong> Evaluación de estructuras de datos:
+					<code>Set</code> y <code>Map</code>
+				</td>
+			</tr>
+
+			<tr>
+				<td colspan="5">
+					<h3>ACTIVIDADES POR DESARROLLAR</h3>
+
+					<h4>1. Contexto de la evaluación</h4>
+
+					<p>
+						En un sistema de mesa de ayuda institucional se registran tickets de soporte técnico.
+						Cada ticket contiene información básica sobre el código del caso, el técnico asignado y el nivel
+						de prioridad.
+					</p>
+
+					<p>
+						El objetivo de esta evaluación es implementar una clase controladora que procese una lista de
+						tickets usando correctamente estructuras <code>Set</code> y <code>Map</code>.
+					</p>
+
+
+					<p>
+						En el enunciado se entregan los nombres de los métodos y sus parámetros, pero no se entrega el
+						tipo de retorno. Se debe definirlo correctamente según la lógica solicitada.
+					</p>
+
+					<h4>2. Modelo base: TicketSoporte</h4>
+
+					<p>
+						Crear la clase <code>TicketSoporte</code> dentro del paquete <code>models</code>.
+						El modelo no debe ser modificado después de su creación.
+					</p>
+
+					<pre class="code-line">
+
+public class TicketSoporte {
+    private String codigo;  // Código del ticket con formato "TK-XXX" (ejemplo: TK-101 o TK-1005)
+    private String tecnico;
+    private int prioridad; // del 1 al 5, donde 5 es la prioridad más alta (sin validación de rango)
+}</pre>
+
+					<h4>3. Clase a implementar: TicketController</h4>
+
+					<p>
+						Crear la clase <code>TicketController</code> dentro del paquete <code>controllers</code>.
+						Toda la lógica de procesamiento debe implementarse en esta clase.
+					</p>
+
+					<p>
+						No se debe cambiar el nombre de los métodos ni los parámetros recibidos.
+					</p>
+
+					<pre class="code-line">
+
+
+public class TicketController {
+
+    public filtrarYOrdenarTickets(List&lt;TicketSoporte&gt; tickets, int prioridadMinima) {
+        // Definir tipo de retorno
+        // Seleccionar la mejor implementación de la estructura correcta
+        // Implementar lógica
+    }
+
+    public agruparCodigosPorPrioridad(List&lt;TicketSoporte&gt; tickets) {
+        // Definir tipo de retorno
+        // Seleccionar la mejor implementación de la estructura correcta
+
+        // Implementar lógica
+    }
+}</pre>
+
+					<h4>4. Datos de referencia para pruebas</h4>
+
+					<p>
+						Se pueden usar los siguientes datos en <code>Main.java</code> para probar la solución.
+					</p>
+
+					<pre class="code-line">List&lt;TicketSoporte&gt; tickets = new ArrayList&lt;&gt;();
+
+tickets.add(new TicketSoporte("TK-104", "Ana Torres", 5));
+tickets.add(new TicketSoporte("TK-101", "Luis Mora", 2));
+tickets.add(new TicketSoporte("TK-108", "Carlos Vega", 4));
+tickets.add(new TicketSoporte("tk-104", "Ana Torres", 5));
+tickets.add(new TicketSoporte("TK-103", "Luis Andrade", 3));
+tickets.add(new TicketSoporte("TK-107", "Mateo Rojas", 1));
+tickets.add(new TicketSoporte("TK-102", "Sofia Cordero", 4));
+tickets.add(new TicketSoporte("TK-106", "Carlos Mendez", 5));
+tickets.add(new TicketSoporte("TK-105", "Ana Molina", 2));
+// Agregar más datos según sea necesario para pruebas adicionales</pre>
+
+					<h4>5. Método A: filtrarYOrdenarTickets</h4>
+
+					<p>
+						Implementar el método
+						<code>filtrarYOrdenarTickets(List&lt;TicketSoporte&gt; tickets, int prioridadMinima)</code>.
+					</p>
+
+					<p>
+						Este método debe filtrar y ordenar tickets según la prioridad mínima indicada.
+					</p>
+
+					<p><strong>Reglas funcionales:</strong></p>
+
+					<ul>
+						<li>Recibe una lista de tickets de soporte.</li>
+						<li>Recibe un número entero que representa la prioridad mínima.</li>
+						<li>Solo se deben considerar tickets con prioridad mayor o igual a la prioridad mínima.</li>
+						<li>El resultado debe eliminar duplicados lógicos.</li>
+						<li>El resultado debe quedar ordenado automáticamente desde la estructura seleccionada.</li>
+					</ul>
+
+					<p><strong>Reglas de ordenamiento:</strong></p>
+
+					<ul>
+						<li>Ordenar por prioridad de forma descendente.</li>
+						<li>Si dos tickets tienen la misma prioridad, ordenar por nombre del técnico de forma
+							ascendente.</li>
+						<li>La comparación del nombre del técnico debe ignorar mayúsculas y minúsculas.</li>
+					</ul>
+
+					<p><strong>Regla de unicidad:</strong></p>
+
+					<ul>
+						<li>Dos tickets se consideran duplicados si tienen el mismo código ignorando mayúsculas y la
+							misma prioridad.</li>
+						<li>Cuando exista un duplicado lógico, solo debe conservarse un registro.</li>
+					</ul>
+
+					<p><strong>Implementación esperada:</strong></p>
+
+					<ul>
+						<li>Debe utilizar una estructura de tipo <code>Set</code>.</li>
+						<li>La implementación seleccionada debe permitir ordenamiento automático.</li>
+						<li>El ordenamiento y la unicidad lógica deben resolverse mediante un comparador.</li>
+					</ul>
+
+					<h4>6. Método B: agruparCodigosPorPrioridad</h4>
+
+					<p>
+						Implementar el método
+						<code>agruparCodigosPorPrioridad(List&lt;TicketSoporte&gt; tickets)</code>.
+					</p>
+
+					<p>
+						Este método debe agrupar tickets según el rango de prioridad de los tickets atendidos.
+					</p>
+
+					<p><strong>Rangos obligatorios:</strong></p>
+
+					<ul>
+						<li><code>ALTA</code>: prioridad mayor o igual a 4.</li>
+						<li><code>MEDIA</code>: prioridad igual a 2 o 3.</li>
+						<li><code>BAJA</code>: prioridad igual a 1.</li>
+					</ul>
+
+					<p><strong>Reglas funcionales:</strong></p>
+
+					<ul>
+						<li>El resultado debe organizarse por clave de rango de prioridad.</li>
+						<li>Las claves del mapa deben ser exactamente <code>ALTA</code>, <code>BAJA</code> y
+							<code>MEDIA</code>.
+						</li>
+						<li>Las claves deben mantenerse ordenadas alfabéticamente.</li>
+						<li>El valor asociado a cada clave debe contener los NUMEROS únicos de los codigos.</li>
+						<li>Se deben almacenar únicamente el númerto del ticket, no objetos <code>TicketSoporte</code>.
+						</li>
+
+					</ul>
+
+					<p><strong>Regla de códigos:</strong></p>
+
+					<ul>
+						<li>De cada codigo se debe tomar únicamente el numero.</li>
+						<li>La unicidad se determina por ese numero.</li>
+						<li>Si el ticket es <code>TK-104</code>, solo se debe almacenar el numero 104</li>
+						<li>Si existen numeros repetidos dentro del mismo grupo, solo se debe conservar una aparición.
+						</li>
+						<li>El orden de los numeros dentro de cada grupo debe estar ordenados asendentemente</li>
+					</ul>
+
+					<p><strong>Ejemplo:</strong></p>
+
+					<pre class="code-line">new TicketSoporte("TK-101", "Carlos Vega", 4)
+new TicketSoporte("TK-102", "Carlos Mendez", 5)</pre>
+
+					<p>
+						En este caso, dentro del grupo ALTA se deben almacenar los números 101 y 102, porque ambos
+						tickets tienen prioridad alta.
+					</p>
+
+
+
+					<h4>7. Ejecución desde Main.java</h4>
+
+					<p>
+						Crear una clase <code>Main</code> para probar los dos métodos. El archivo
+						<code>Main.java</code> solo debe crear datos, llamar métodos y mostrar resultados.
+					</p>
+
+
+
+					<h4>8. README.md obligatorio</h4>
+
+					<p>
+						Además del código fuente, se debe entregar un archivo <code>README.md</code> con una explicación
+						técnica de las estructuras seleccionadas.
+					</p>
+
+					<p>
+						Para cada método se debe explicar:
+					</p>
+
+					<ul>
+						<li>Qué implementación de <code>Set</code> o <code>Map</code> se utilizó.</li>
+						<li>Por qué se escogió esa implementación.</li>
+						<li>Cómo se garantiza la unicidad de los datos.</li>
+						<li>Cómo se conserva o define el orden de los resultados.</li>
+						<li>Cómo funciona la lógica implementada.</li>
+					</ul>
+
+					<p>
+						El README debe contener una sección como la siguiente:
+					</p>
+
+					<pre class="code-line"># Evaluación Set y Map
+
+## Método A: filtrarYOrdenarTickets
+
+Implementación utilizada:
+Explicación:
+
+## Método B: agruparCodigosPorPrioridad
+
+Implementación utilizada para el Map:
+Implementación utilizada para los Set internos:
+Explicación:</pre>
+
+					<h4>9. Reglas importantes</h4>
+
+					<ul>
+						<li>No modificar la clase <code>TicketSoporte</code>.</li>
+						<li>No cambiar el nombre de los métodos solicitados.</li>
+						<li>No cambiar los parámetros de los métodos solicitados.</li>
+						<li>No resolver la lógica principal dentro de <code>Main.java</code>.</li>
+						<li>No imprimir dentro de los métodos evaluados.</li>
+						<li>No usar <code>Stream API</code>.</li>
+						<li>No usar <code>Collectors</code>.</li>
+						<li>No usar librerías externas.</li>
+						<li>No usar métodos de ordenamiento de listas para reemplazar el uso de estructuras ordenadas.
+						</li>
+						<li>Los métodos deben procesar datos y retornar estructuras.</li>
+					</ul>
+
+					<h4>10. Entregables</h4>
+
+					<p>
+						Subir al AVAC el proyecto completo con los archivos desarrollados.
+					</p>
+
+					<ul>
+						<li><code>TicketSoporte.java</code></li>
+						<li><code>TicketController.java</code></li>
+						<li><code>Main.java</code></li>
+						<li><code>README.md</code></li>
+					</ul>
+
+
+
+					<h4>12. Rúbrica de evaluación</h4>
+
+					<table class="rubric">
+						<thead>
+							<tr>
+								<th>Componente evaluado</th>
+								<th>Descripción</th>
+								<th>Puntaje</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Compilación correcta</td>
+								<td>El proyecto compila y ejecuta sin errores.</td>
+								<td class="center">1 pts</td>
+							</tr>
+
+							<tr>
+								<td>Método A: <code>filtrarYOrdenarTickets</code></td>
+								<td>
+									Filtra correctamente por prioridad mínima, elimina duplicados lógicos y ordena por
+									prioridad descendente y código ascendente ignorando mayúsculas.
+								</td>
+								<td class="center">3 pts</td>
+							</tr>
+
+							<tr>
+								<td>Método B: <code>agruparCodigosPorPrioridad</code></td>
+								<td>
+									Clasifica correctamente por rangos de prioridad, mantiene claves ordenadas, almacena
+									números únicos de tickets y ordena ascendentemente los números dentro de cada grupo.
+								</td>
+								<td class="center">4 pts</td>
+							</tr>
+
+							<tr>
+								<td>Explicación técnica en README</td>
+								<td>
+									Justifica correctamente por qué se escogió cada implementación de
+									<code>Set</code> y <code>Map</code>, explicando unicidad, ordenamiento y lógica
+									aplicada.
+								</td>
+								<td class="center">2 pts</td>
+							</tr>
+
+							<tr class="subtotal">
+								<td><strong>TOTAL</strong></td>
+								<td></td>
+								<td class="center"><strong>10 pts</strong></td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+		</table>
+
+		<div style="text-align: center; margin: 0 auto;">
+			<p class="signature">
+				Docente: Ing. Pablo Torres
+			</p>
+
+		</div>
+
+		<div class="footer">
+			<span>Formato aprobado con Res. C.S. N° 076-04-2016-04-20</span>
+			<span>Página 1 de 1</span>
+		</div>
+	</main>
+
+	<script src="./js/protection.js"></script>
+	<script src="./js/protection-security-overlay.js"></script>
+
+</body>
+
+</html>
